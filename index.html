@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitã Marvel Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* Container do Card Principal */
+        .card-container {
+            position: relative;
+            width: 550px; /* Largura retangular do card da foto */
+            height: 320px; /* Altura do retângulo roxo */
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-top: 80px; /* Espaço para a cabeça não cortar no topo da tela */
+        }
+
+        /* O retângulo roxo/rosa de fundo */
+        .retangulo-fundo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #4a154b, #6b21a8, #ec4899); /* Mistura roxo escuro, médio e rosa */
+            border-radius: 24px;
+            z-index: 1;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Bloco de Texto (Escondido por padrão à esquerda) */
+        .conteudo-texto {
+            position: absolute;
+            left: 40px;
+            width: 50%;
+            z-index: 2;
+            color: #ffffff;
+            opacity: 0;
+            transform: translateX(-20px); /* Começa um pouco mais para a esquerda */
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .conteudo-texto h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .conteudo-texto p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #f3e8ff;
+            margin-bottom: 20px;
+        }
+
+        .btn-read-more {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: background 0.3s;
+        }
+
+        .btn-read-more:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Foto da Capitã Marvel */
+        .foto-mulher {
+            position: absolute;
+            bottom: 0;
+            /* Posição Inicial: Centralizada no card */
+            left: 50%;
+            transform: translateX(-50%); 
+            height: 135%; /* Fica maior que o card para a cabeça e cabelo saírem para fora */
+            width: auto;
+            z-index: 3;
+            mix-blend-mode: screen; /* Remove o fundo preto automaticamente */
+            transition: left 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            pointer-events: none;
+        }
+
+        /* ==================== EFEITO HOVER (PASSAR O MOUSE) ==================== */
+
+        /* Transição suave da Mulher indo para a Direita */
+        .card-container:hover .foto-mulher {
+            left: 72%; /* Desloca exatamente para o lado direito do retângulo */
+            transform: translateX(-50%) scale(1.02); /* Mantém o ponto de pivô e dá um ajuste sutil */
+        }
+
+        /* Transição suave do Texto aparecendo */
+        .card-container:hover .conteudo-texto {
+            opacity: 1;
+            transform: translateX(0); /* Desliza para a posição correta */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        
+        <div class="conteudo-texto">
+            <h2>Captain Marvel</h2>
+            <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.</p>
+            <a href="#" class="btn-read-more">Read More</a>
+        </div>
+
+        <img src="1.png" alt="Captain Marvel" class="foto-mulher">
+        
+        <div class="retangulo-fundo"></div>
+
+    </div>
+
+</body>
+</html>
